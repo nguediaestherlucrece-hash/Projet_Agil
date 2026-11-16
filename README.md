@@ -1,59 +1,200 @@
-# Timeorganiser
+# TimeOrganiser - Agenda assisté par IA
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+Application mobile de gestion de calendrier pilotée par un assistant d'intelligence artificielle.
 
-## Development server
+## 📋 Description
 
-To start a local development server, run:
+TimeOrganiser est une application d'agenda moderne qui utilise l'intelligence artificielle pour simplifier la gestion de votre calendrier. Au lieu de remplir des formulaires complexes, décrivez simplement vos événements en langage naturel, et l'IA s'occupe du reste !
 
-```bash
-ng serve
-```
+## ✨ Fonctionnalités principales
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 🤖 Assistant IA
+- **Saisie en langage naturel** : "Réunion demain à 14h avec Paul pendant 1 heure"
+- **Saisie vocale** : Dictez vos événements
+- **Mode aperçu** : Validez les propositions avant ajout
+- **Mode automatique** : Ajout direct des événements
 
-## Code scaffolding
+### 📅 Gestion de calendrier
+- **Vues multiples** : Jour, Semaine, Mois
+- **Événements récurrents** : Support du format RRULE (RFC 5545)
+- **Détection de conflits** : Avertissement en cas de chevauchement
+- **Rappels personnalisables** : Notifications locales
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🔒 Sécurité & Confidentialité
+- **Offline-first** : Fonctionne sans connexion
+- **Données chiffrées** : Base locale SQLite chiffrée
+- **Consentement IA** : Contrôle total sur l'utilisation de l'IA
+- **Synchronisation sécurisée** : Gestion des conflits
 
-```bash
-ng generate component component-name
-```
+### 🎯 Autres fonctionnalités
+- Partage d'événements avec invitations
+- Interface responsive
+- Mode hors ligne avec file d'attente
+- Gestion des exceptions de récurrence
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Démarrage rapide
 
-```bash
-ng generate --help
-```
+### Prérequis
+- Node.js 18+
+- npm 11+
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Installation
 
 ```bash
-ng e2e
+# Cloner le projet
+git clone <repository-url>
+cd timeorganiser
+
+# Installer les dépendances
+npm install
+
+# Lancer l'application en mode développement
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+L'application sera accessible sur `http://localhost:4200`
 
-## Additional Resources
+### Compte de démonstration
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Au premier lancement, un compte démo est automatiquement créé :
+- **Email** : demo@timeorganiser.com
+- **Mot de passe** : demo123
+
+## 🏗️ Architecture
+
+### Stack technique
+- **Frontend** : Angular 22 avec Signals
+- **Base de données locale** : SQLite (simulation via localStorage)
+- **Styling** : CSS natif avec design moderne
+- **IA** : Integration API LLM (simulation pour la démo)
+
+### Structure du projet
+
+```
+src/
+├── app/
+│   ├── components/          # Composants UI
+│   │   ├── ai-input/       # Saisie assistée par IA
+│   │   └── calendar-view/  # Vues calendrier
+│   ├── services/           # Services métier
+│   │   ├── auth.service.ts
+│   │   ├── calendar.service.ts
+│   │   ├── ia.service.ts
+│   │   └── preferences.service.ts
+│   └── models/             # Modèles de données
+│       ├── event.model.ts
+│       ├── ia.model.ts
+│       ├── user.model.ts
+│       └── sync.model.ts
+```
+
+## 📖 Utilisation
+
+### Créer un événement avec l'IA
+
+1. Cliquez sur l'icône 🤖 pour ouvrir l'assistant IA
+2. Décrivez votre événement en langage naturel :
+   - "Réunion demain à 14h pendant 1 heure"
+   - "Cours de maths tous les lundis et mercredis de 8h à 10h"
+   - "Rendez-vous chez le dentiste vendredi prochain à 15h30"
+3. Vérifiez l'aperçu généré
+4. Validez pour ajouter l'événement au calendrier
+
+### Navigation dans le calendrier
+
+- **Vue Jour** : Grille horaire complète de la journée
+- **Vue Semaine** : 7 jours côte à côte
+- **Vue Mois** : Vue mensuelle avec compteur d'événements
+- Utilisez les flèches pour naviguer entre les périodes
+- Cliquez sur "Aujourd'hui" pour revenir à la date actuelle
+
+### Paramètres
+
+Accédez aux paramètres via l'icône ⚙️ :
+- **Mode d'ajout** : Aperçu ou Automatique
+- **Consentement IA** : Activer/Désactiver l'assistant
+- **Notifications** : Gérer les rappels
+
+## 🔧 Configuration
+
+### Clé API IA
+
+La clé API fournie dans le code est à des fins de démonstration. Pour utiliser une vraie API LLM :
+
+1. Obtenez votre clé API auprès de votre fournisseur
+2. Modifiez `src/app/services/ia.service.ts` :
+
+```typescript
+private readonly API_KEY = 'VOTRE_CLE_API';
+private readonly API_ENDPOINT = 'https://api.votre-fournisseur.com';
+```
+
+## 🧪 Tests
+
+```bash
+# Lancer les tests unitaires
+npm test
+
+# Tests end-to-end
+npm run e2e
+
+# Coverage
+npm run test:coverage
+```
+
+## 📦 Build
+
+```bash
+# Build de production
+npm run build
+
+# Les fichiers compilés se trouvent dans dist/
+```
+
+## 🎨 Personnalisation
+
+### Thème
+
+Les couleurs principales peuvent être modifiées dans `src/app/app.css` :
+
+```css
+:root {
+  --primary-color: #2196F3;
+  --success-color: #4CAF50;
+  --danger-color: #f44336;
+}
+```
+
+## 🐛 Problèmes connus
+
+- La reconnaissance vocale nécessite une connexion HTTPS
+- Certains constructeurs Android peuvent limiter les notifications en arrière-plan
+- La synchronisation multi-appareils n'est pas encore implémentée
+
+## 🚀 Roadmap
+
+- [ ] Import d'événements depuis image/PDF
+- [ ] Synchronisation avec Google Agenda/Outlook
+- [ ] Mode collaboratif temps réel
+- [ ] Application pour montre connectée
+- [ ] Support multilingue complet
+- [ ] Suggestions proactives de créneaux
+
+## 📄 Licence
+
+Ce projet est sous licence MIT.
+
+## 👥 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
+
+## 📞 Support
+
+Pour toute question ou problème, veuillez ouvrir une issue sur GitHub.
+
+---
+
+**Version** : 1.0.0  
+**Date** : Janvier 2027  
+**Auteur** : Équipe TimeOrganiser
+"# Projet_Agil" 
